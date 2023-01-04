@@ -25,6 +25,30 @@ const getAllProduct = async (req) => {
   return result;
 };
 
+const getAllProductList = async (req) => {
+  const result = await Product.find()
+    .populate([
+      {
+        path: "product_image_url",
+        model: "Image",
+        select: "name urlLink -_id",
+      },
+      {
+        path: "product_info",
+        model: "ProductInfo",
+        select: "name -_id",
+      },
+      {
+        path: "product_category",
+        model: "Category",
+        select: "name -_id",
+      },
+    ])
+    .lean();
+
+  return result;
+};
+
 const detailProduct = async (req) => {
   const { id } = req.params;
 
@@ -47,6 +71,12 @@ const detailProduct = async (req) => {
       },
     ])
     .lean();
+
+  return result;
+};
+
+const getOneProduct = async (id) => {
+  const result = await Product.findOne({ _id: id }).lean();
 
   return result;
 };
@@ -88,9 +118,11 @@ const deleteProduct = async (req) => {
 };
 
 module.exports = {
+  getOneProduct,
   getAllProduct,
   createProduct,
   detailProduct,
   updateProduct,
   deleteProduct,
+  getAllProductList,
 };

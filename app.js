@@ -8,6 +8,7 @@ const app = express();
 const APIv1 = `/api/v1`;
 
 const authRouter = require("./app/api/v1/auth/router");
+const userouter = require("./app/api/v1/users/router");
 const categoriesRouter = require("./app/api/v1/categories/router");
 const productInfoRouter = require("./app/api/v1/product-info/router");
 const productRouter = require("./app/api/v1/product/router");
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(`${APIv1}`, authRouter);
+app.use(`${APIv1}`, userouter);
 app.use(`${APIv1}`, categoriesRouter);
 app.use(`${APIv1}`, productInfoRouter);
 app.use(`${APIv1}`, productRouter);
