@@ -11,6 +11,8 @@ const authRouter = require("./app/api/v1/auth/router");
 const categoriesRouter = require("./app/api/v1/categories/router");
 const productInfoRouter = require("./app/api/v1/product-info/router");
 const productRouter = require("./app/api/v1/product/router");
+const favoritesRouter = require("./app/api/v1/favorites/router");
+const cartsRouter = require("./app/api/v1/carts/router");
 const imageRouter = require("./app/api/v1/images/router");
 
 // middlewares
@@ -28,6 +30,8 @@ app.use(`${APIv1}`, authRouter);
 app.use(`${APIv1}`, categoriesRouter);
 app.use(`${APIv1}`, productInfoRouter);
 app.use(`${APIv1}`, productRouter);
+app.use(`${APIv1}`, favoritesRouter);
+app.use(`${APIv1}`, cartsRouter);
 app.use(`${APIv1}`, imageRouter);
 
 // middlewares
