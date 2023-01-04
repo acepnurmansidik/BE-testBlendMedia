@@ -7,7 +7,8 @@ const createOrder = async (payloads) => {
 };
 
 const getAllCustomerOrder = async (req) => {
-  const result = await Order.find(payloads);
+  const { _id } = req.user;
+  const result = await Order.find({ customer_id: _id });
 
   return result;
 };

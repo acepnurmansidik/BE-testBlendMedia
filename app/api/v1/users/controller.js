@@ -1,4 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
+const { getAllCustomerOrder } = require("../../../service/mongo/orders");
 const { getOneProduct } = require("../../../service/mongo/product");
 const { checkAddress } = require("../../../service/mongo/users");
 const Order = require("../orders/model");
@@ -36,6 +37,17 @@ const createOrders = async (req, res, next) => {
   }
 };
 
+const indexOrder = async (req, res, next) => {
+  try {
+    const result = await getAllCustomerOrder(req);
+
+    res.status(StatusCodes.OK).json({ data: result });
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   createOrders,
+  indexOrder,
 };
