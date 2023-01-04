@@ -6,6 +6,9 @@ let imageSchema = Schema(
     name: {
       type: String,
     },
+    urlLink: {
+      type: String,
+    },
   },
   { timestamp: true }
 );

@@ -32,8 +32,9 @@ const signIn = async (req) => {
   if (!isPasswordMatch)
     throw new BadRequestError("Password yang anda masukan salah!");
 
+  delete result._doc.password;
   // create token
-  const token = await createJWT({ payload: createTokenUser(result) });
+  const token = await createJWT({ payload: await createTokenUser(result) });
 
   return {
     name: result.name,
