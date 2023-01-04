@@ -1,15 +1,15 @@
 const { StatusCodes } = require("http-status-codes");
 const {
-  getAllCategories,
-  createCategory,
-  detailCategory,
-  updateCategory,
-  deleteCategory,
-} = require("../../../service/mongo/categories");
+  getAllProductInfo,
+  createProductInfo,
+  detailProductInfo,
+  updateProductInfo,
+  deleteProductInfo,
+} = require("../../../service/mongo/product-info");
 
 const index = async (req, res, next) => {
   try {
-    const result = await getAllCategories();
+    const result = await getAllProductInfo();
 
     res.status(StatusCodes.OK).json({ data: result });
   } catch (err) {
@@ -19,9 +19,9 @@ const index = async (req, res, next) => {
 
 const create = async (req, res, next) => {
   try {
-    const result = await createCategory(req);
+    const result = await createProductInfo(req);
 
-    res.status(StatusCodes.CREATED).json({ data: result });
+    res.status(StatusCodes.OK).json({ data: result });
   } catch (err) {
     next(err);
   }
@@ -29,7 +29,7 @@ const create = async (req, res, next) => {
 
 const findDetail = async (req, res, next) => {
   try {
-    const result = await detailCategory(req);
+    const result = await detailProductInfo(req);
 
     res.status(StatusCodes.OK).json({ data: result });
   } catch (err) {
@@ -39,7 +39,7 @@ const findDetail = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   try {
-    const result = await updateCategory(req);
+    const result = await updateProductInfo(req);
 
     res.status(StatusCodes.OK).json({ data: result });
   } catch (err) {
@@ -49,7 +49,7 @@ const update = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    const result = await deleteCategory(req);
+    const result = await deleteProductInfo(req);
 
     res.status(StatusCodes.OK).json({ data: result });
   } catch (err) {

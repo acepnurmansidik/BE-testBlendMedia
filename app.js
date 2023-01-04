@@ -8,6 +8,7 @@ const app = express();
 const APIv1 = `/api/v1`;
 
 const categoriesRouter = require("./app/api/v1/categories/router");
+const productInfoRouter = require("./app/api/v1/product-info/router");
 
 // middlewares
 const notFoundMiddleware = require("./app/middlewares/not-found");
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(`${APIv1}`, categoriesRouter);
+app.use(`${APIv1}`, productInfoRouter);
 
 // middlewares
 app.use(notFoundMiddleware);
