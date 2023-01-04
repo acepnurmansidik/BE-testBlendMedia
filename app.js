@@ -7,6 +7,7 @@ const cors = require("cors");
 const app = express();
 const APIv1 = `/api/v1`;
 
+const authRouter = require("./app/api/v1/auth/router");
 const categoriesRouter = require("./app/api/v1/categories/router");
 const productInfoRouter = require("./app/api/v1/product-info/router");
 const imageRouter = require("./app/api/v1/images/router");
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(`${APIv1}`, authRouter);
 app.use(`${APIv1}`, categoriesRouter);
 app.use(`${APIv1}`, productInfoRouter);
 app.use(`${APIv1}`, imageRouter);
