@@ -10,7 +10,7 @@ const getAllCart = async (req) => {
       {
         path: "product_id",
         model: "Product",
-        select: "product_name product_image_url",
+        select: "product_name product_image_url product_price",
         populate: [
           {
             path: "product_image_url",

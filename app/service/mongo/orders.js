@@ -8,7 +8,9 @@ const createOrder = async (payloads) => {
 
 const getAllCustomerOrder = async (req) => {
   const { _id } = req.user;
-  const result = await Order.find({ customer_id: _id });
+  const result = await Order.find({ customer_id: _id }).populate(
+    "product_image_url"
+  );
 
   return result;
 };

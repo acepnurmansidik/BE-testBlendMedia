@@ -26,22 +26,23 @@ const productSchema = Schema(
     },
     product_image_url: {
       type: mongoose.Types.ObjectId,
-      required: [true, "Image can't be empty!"],
       ref: "Image",
     },
     product_info: {
       type: mongoose.Types.ObjectId,
-      required: [true, "Status can't be empty!"],
       ref: "ProductInfo",
     },
     product_category: {
       type: mongoose.Types.ObjectId,
-      required: [true, "Category can't be empty!"],
       ref: "Category",
     },
     real_pdp_url: {
       type: String,
       required: [true, "Url can't be empty!"],
+    },
+    description: {
+      type: String,
+      required: [true, "Description can't be empty!"],
     },
   },
   { timestamps: true }
