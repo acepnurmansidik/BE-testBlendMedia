@@ -7,14 +7,9 @@ const cors = require("cors");
 const app = express();
 const APIv1 = `/api/v1`;
 
-const authRouter = require("./app/api/v1/auth/router");
-const userouter = require("./app/api/v1/users/router");
-const categoriesRouter = require("./app/api/v1/categories/router");
-const productInfoRouter = require("./app/api/v1/product-info/router");
-const productRouter = require("./app/api/v1/product/router");
-const favoritesRouter = require("./app/api/v1/favorites/router");
-const cartsRouter = require("./app/api/v1/carts/router");
-const imageRouter = require("./app/api/v1/images/router");
+const mahasiswaRouter = require("./app/api/v1/mahasiswa/router");
+const matkulRouter = require("./app/api/v1/matakuliah/router");
+const nilaiRouter = require("./app/api/v1/nilai/router");
 
 // middlewares
 const notFoundMiddleware = require("./app/middlewares/not-found");
@@ -27,14 +22,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(`${APIv1}`, authRouter);
-app.use(`${APIv1}`, userouter);
-app.use(`${APIv1}`, categoriesRouter);
-app.use(`${APIv1}`, productInfoRouter);
-app.use(`${APIv1}`, productRouter);
-app.use(`${APIv1}`, favoritesRouter);
-app.use(`${APIv1}`, cartsRouter);
-app.use(`${APIv1}`, imageRouter);
+app.use(`${APIv1}`, mahasiswaRouter);
+app.use(`${APIv1}`, matkulRouter);
+app.use(`${APIv1}`, nilaiRouter);
 
 // middlewares
 app.use(notFoundMiddleware);

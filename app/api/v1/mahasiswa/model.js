@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 const { model, Schema } = mongoose;
 
-let imageSchema = Schema(
+const mahasiswaSchema = Schema(
   {
-    name: {
+    nama: {
       type: String,
     },
-    urlLink: {
+    alamat: {
       type: String,
     },
   },
-  { timestamp: true }
+  { timestamps: true },
 );
 
-module.exports = model("Image", imageSchema);
+module.exports = model("Mahasiswa", mahasiswaSchema);
